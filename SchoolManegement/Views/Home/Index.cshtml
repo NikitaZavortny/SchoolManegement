@@ -1,0 +1,38 @@
+﻿@model List<SchoolManegement.Models.Subject>
+@{
+    ViewData["Title"] = "Home Page";
+}
+@{
+    int cd = 0;
+}
+<div class="jumbotron">
+    <table>
+
+        @foreach (var i in Model)
+        {
+        <tr>
+            <td><h2>Task For: @i.Num Date</h2></td>
+
+
+            <td> Name : @i.Name</td>
+            <td>Description:@i.Description</td>
+            <td>
+                @if (i.IsDone)
+                {
+                  <b>Task is done</b>   @Html.ActionLink("reverse", "reverse", new { id = i.Id, p = false })
+                }
+                else
+                {@Html.ActionLink("reverse", "reverse", new { id = i.Id, p = true })}
+            </td>
+
+            <td>@Html.ActionLink("Delete", "Delete", new { id = i.Id })</td>
+            <td>Edit</td>
+        </tr>
+            <p></p>
+        }
+
+    </table>
+    
+
+    <P><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="CSubj">Add new task</a></P>
+</div>
