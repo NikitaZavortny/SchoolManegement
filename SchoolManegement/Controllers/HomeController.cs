@@ -41,6 +41,20 @@ namespace SchoolManegement.Controllers
             return View("Index", ac.Subjects.OrderBy(x => x.Num).ToList());
         }
 
+        public ActionResult EditTask(int id) 
+        {
+            return View(ac.Subjects.FirstOrDefault(x => x.Id == id));
+        }
+        [HttpPost]
+        public ActionResult EditTask(Subject subject)
+        {
+            var needobj = ac.Subjects.FirstOrDefault(x => x.Id == subject.Id);
+            ac.Subjects.Remove(needobj);
+            ac.Subjects.Add(subject);
+            ac.SaveChanges();
+            return View(ac.Subjects.FirstOrDefault(x => x.Id == subject.Id));
+        }
+
         public ActionResult CSubj()
         {
             return View();

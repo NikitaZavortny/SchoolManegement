@@ -6,6 +6,7 @@
     int cd = 0;
 }
 <div class="jumbotron">
+
     <table>
 
         @foreach (var i in Model)
@@ -19,20 +20,19 @@
             <td>
                 @if (i.IsDone)
                 {
-                  <b>Task is done</b>   @Html.ActionLink("reverse", "reverse", new { id = i.Id, p = false })
+                  <b>Task is done</b>   <a>@Html.ActionLink("reverse", "reverse", new { id = i.Id, p = false })</a>
                 }
                 else
-                {@Html.ActionLink("reverse", "reverse", new { id = i.Id, p = true })}
-            </td>
+                {<a>@Html.ActionLink("reverse", "reverse", new { id = i.Id, p = true })</a>}
+</td>
 
-            <td>@Html.ActionLink("Delete", "Delete", new { id = i.Id })</td>
-            <td>Edit</td>
+            <td><a>@Html.ActionLink("Delete", "Delete", new { id = i.Id })</a></td>
+            <td>@Html.ActionLink("EditTask", "EditTask", new { id = i.Id })</td>
         </tr>
-            <p></p>
+            
         }
 
     </table>
-    
 
-    <P><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="CSubj">Add new task</a></P>
+    <P><a class="btn btn-primary" asp-area="" asp-controller="Home" asp-action="CSubj">Add new task</a></P>
 </div>
